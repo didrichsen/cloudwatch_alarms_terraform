@@ -35,4 +35,4 @@ jobs:
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: cd infra/ && terraform apply -var="student_name=${{ env.STUDENT_NAME }}"
+        run: cd infra/ && terraform apply -auto-approve -var="student_name=${{ env.STUDENT_NAME }}"
