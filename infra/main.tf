@@ -48,6 +48,6 @@ DASHBOARD
 
 module "alarm" {
   source = "./alarm_module"
-  phone_number = "+47 40 51 68 68"
+  email = "simendidrichsen@gmail.com"
   prefix = var.student_name
 }
