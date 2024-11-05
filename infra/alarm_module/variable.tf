@@ -3,9 +3,9 @@ variable "threshold" {
   type = string
 }
 
-variable "phone_number" {
+variable "email" {
   type = string
-  default = "+47 40 51 68 68"
+  default = "simendidrichsen@gmail.com"
 }
 
 variable "prefix" {
