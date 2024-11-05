@@ -17,16 +17,17 @@ jobs:
       STUDENT_NAME: terraform_github_actions
     steps:
       - uses: actions/checkout@v3
+
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
 
       - name: Terraform Init
         id: Init
-        run: terraform init
+        run: cd infra/ && terraform init
 
       - name: Terraform Plan
         id: plan
-        run: terraform plan -var="student_name=$STUDENT_NAME"
+        run: cd infra/ && terraform plan -var="student_name=${{ env.STUDENT_NAME }}"
 
       - name: Terraform Plan Status
         if: steps.plan.outcome == 'failure'
@@ -34,4 +35,4 @@ jobs:
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform apply -var="student_name=$STUDENT_NAME"
+        run: cd infra/ && terraform apply -var="student_name=${{ env.STUDENT_NAME }}
